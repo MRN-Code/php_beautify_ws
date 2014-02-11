@@ -21,7 +21,7 @@ if (!empty($argv[1])) {
    die;
 }
 //get username
-echo "running as " . get_active_user();
+echo "running as " . get_current_user();
 echo $new_line;
 //send the file
 $new_filename = send_file($target_url, $filename, $response_filename_ext);
@@ -31,10 +31,7 @@ if ($new_filename) {
    echo $new_line;
    echo "Your beautiul new file has been written to $new_filename";
 }
-function get_active_user() {
-   $userInfo = posix_getpwuid(posix_getuid());
-   $user = $userInfo['name'];
-}
+
 function send_file($target_url, $filename, $response_filename_ext = ".log") {
    $new_line = "\n";
    //setup new filename for writing to the local dir
